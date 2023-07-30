@@ -1,0 +1,51 @@
+
+$pushInputDir ".."
+//$setInputDir ".."
+
+$cmd "-cpu-used 3 -pix_fmt yuv420p"
+$cmdRaw "-c copy -map 0"
+
+$outPrefix "vrc_d_"
+$outPrefixRaw "vrc_raw_d_"
+
+$outExt ".webm"
+$outExtRaw ".mkv"
+
+
+"output_video.mkv"
+{
+	$cmd "-b:v 1000k"
+
+	"input_video.mkv"
+	{
+	}
+}
+
+"D:/example/of/windows/absolute path/video.mkv"
+{
+	// if you don't specify an input for some timestamps
+	// it will create an input video with the same path as the output video
+	"00:00:24.000"		"00:00:46.000"
+	"00:01:05.000"		"00:01:07.000"
+	"00:01:09.400"		"00:01:20.000"
+
+	"input video.mkv"		 {
+		"00:00:24.000"		"00:00:46.000"
+	}
+}
+
+
+"/example/of/linux/absolute path/video.mkv"
+{
+	"00:00:24.000"		"00:00:46.000"
+	"00:00:24.000"		"00:00:46.000"
+	"00:00:24.000"		"00:00:46.000"
+
+	"input video.mkv"		 {
+		"00:00:24.000"		"00:00:46.000"
+	}
+}
+
+//$popInputDir
+
+
